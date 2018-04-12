@@ -34,7 +34,7 @@ object SparkWithRDD {
 
     // number of iterations
     val numRound = 10  
-    val num_workers = 1  
+    val num_workers = 4  
 
     // processing
     val trainCSV = sc.textFile(inputTrainPath).map(line =>line.split(",").map(_.trim.toDouble))
