@@ -1,8 +1,8 @@
-val xgboostSparkPath = "file:///Users/ericchiu/spark-2.3.0-bin-hadoop2.7/sparkRDD_xgb/lib/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar"
+val xgboostSparkPath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar"
 
-val xgboostPath = "file:///Users/ericchiu/spark-2.3.0-bin-hadoop2.7/sparkRDD_xgb/lib/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar"
+val xgboostPath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar"
 
-val xgboostExamplePath = "file:///Users/ericchiu/spark-2.3.0-bin-hadoop2.7/sparkRDD_xgb/lib/xgboost4j-example-0.8-SNAPSHOT-jar-with-dependencies.jar"
+val xgboostExamplePath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-example-0.8-SNAPSHOT-jar-with-dependencies.jar"
 
 name := "Spark XGBoost"
 
