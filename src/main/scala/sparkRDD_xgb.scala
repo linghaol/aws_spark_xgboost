@@ -28,13 +28,13 @@ object SparkWithRDD {
     implicit val sc = new SparkContext(sparkConf)
     
     // settings
-    val inputTrainPath = "s3://ee451-team-project/input/creditcard.csv"
+    val inputTrainPath = "s3://ee451-team-project/input/traindata.csv"
     val outputModelPath = "s3://ee451-team-project/output/model"
     val outputTextPath = "s3://ee451-team-project/output/time"
 
     // number of iterations
-    val numRound = 1000  
-    val num_workers = 4  
+    val numRound = 10  
+    val num_workers = 1  
 
     // processing
     val trainCSV = sc.textFile(inputTrainPath).map(line =>line.split(",").map(_.trim.toDouble))
@@ -47,7 +47,7 @@ object SparkWithRDD {
     // training parameters
     val paramMap = List(
       "eta" -> 0.1f,
-      "max_depth" -> 30,
+      "max_depth" -> 3,
       "objective" -> "binary:logistic").toMap
 
     //************
