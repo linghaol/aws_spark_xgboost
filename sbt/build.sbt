@@ -1,8 +1,10 @@
-val xgboostSparkPath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar"
 
-val xgboostPath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar"
+val xgboostSparkPath = "file://home/hadoop/aws_spark_xgboost/sbt/lib/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar"
 
-val xgboostExamplePath = "https://s3-us-west-2.amazonaws.com/ee451-team-project/xgboost4j-example-0.8-SNAPSHOT-jar-with-dependencies.jar"
+val xgboostPath = "file://home/hadoop/aws_spark_xgboost/sbt/lib/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar"
+
+val xgboostExamplePath = "file://home/hadoop/aws_spark_xgboost/sbt/lib/xgboost4j-example-0.8-SNAPSHOT-jar-with-dependencies.jar"
+
 
 name := "Spark XGBoost"
 
@@ -15,6 +17,6 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-mllib" % "2.3.0",
   "ml.dmlc" % "xgboost4j" % "0.8" % "provided" from xgboostPath,
   "ml.dmlc" % "xgboost4j-spark" % "0.8" % "provided" from xgboostSparkPath,
-  "ml.dmlc" % "xgboost4j-example" % "0.8" % "provided" from xgboostExamplePath,
+  "ml.dmlc" % "xgboost4j-example" % "0.8" % "provided" from xgboostExamplePath
 )
 
