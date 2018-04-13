@@ -23,7 +23,7 @@ import ml.dmlc.xgboost4j.scala.spark.XGBoost
 
 object SparkWithRDD {
   def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf().setMaster("local").setAppName("XGBoost-spark-example")
+    val sparkConf = new SparkConf().setAppName("XGBoost-spark-example")
     
     implicit val sc = new SparkContext(sparkConf)
     
@@ -34,7 +34,7 @@ object SparkWithRDD {
 
     // number of iterations
     val numRound = 10  
-    val num_workers = 4  
+    val num_workers = 2  
 
     // processing
     val trainCSV = sc.textFile(inputTrainPath).map(line =>line.split(",").map(_.trim.toDouble))
@@ -64,6 +64,6 @@ object SparkWithRDD {
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
-    sc.parallelize(Array(t1-t0)).saveAsTextFile(outputTextPath)
+    sc.parallelize(Array(t1-t0)).coalesce(1).saveAsTextFile(outputTextPath)
   }
 }
