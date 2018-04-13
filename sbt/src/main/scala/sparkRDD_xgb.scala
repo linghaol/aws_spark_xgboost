@@ -23,7 +23,7 @@ import ml.dmlc.xgboost4j.scala.spark.XGBoost
 
 object SparkWithRDD {
   def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf().setMaster("yarn").setAppName("XGBoost-spark-example")
+    val sparkConf = new SparkConf().setAppName("XGBoost-spark-example")
     
     implicit val sc = new SparkContext(sparkConf)
     
@@ -64,6 +64,6 @@ object SparkWithRDD {
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
-    sc.parallelize([t1 - t0]).saveAsTextFile(outputTextPath)
+    sc.parallelize(Array(t1-t0)).saveAsTextFile(outputTextPath)
   }
 }
