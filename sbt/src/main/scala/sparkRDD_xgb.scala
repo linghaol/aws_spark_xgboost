@@ -64,6 +64,6 @@ object SparkWithRDD {
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
-    result.parallelize([t1 - t0]).saveAsTextFile(outputTextPath)
+    sc.parallelize([t1 - t0]).saveAsTextFile(outputTextPath)
   }
 }
