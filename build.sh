@@ -24,17 +24,12 @@ make -j4
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk.x86_64
 
 cd jvm-packages
-mvn package -DskipTests
-
+sudo mvn package -DskipTests
 
 curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
 sudo mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 sudo yum install sbt
 
-
 export PATH=/usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin:$PATH
 
-cd ../../sbt
-
-sbt package
 
