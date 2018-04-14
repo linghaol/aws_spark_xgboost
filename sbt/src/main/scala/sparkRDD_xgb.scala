@@ -28,9 +28,11 @@ object SparkWithRDD {
     implicit val sc = new SparkContext(sparkConf)
     
     // settings
-    val inputTrainPath = "s3://ee451-team-project/input/creditcard.csv"
-    val outputModelPath = "s3://ee451-team-project/output/model"
-    val outputTextPath = "s3://ee451-team-project/output/time"
+    val inputTrainPath = "s3://ee451-team-project/input/train_7w.csv"
+    val inputTestPath = "s3://ee451-team-project/input/test_7w.csv"
+    val outputModelPath = "s3://ee451-team-project/output/model_7w"
+    val outputTextPath = "s3://ee451-team-project/output/time_7w"
+    val outputErrorPath = "s3://ee451-team-project/output/error_7w"
 
     // number of iterations
     val numRound = 1000  
@@ -39,10 +41,10 @@ object SparkWithRDD {
     // processing
     val trainCSV = sc.textFile(inputTrainPath).map(line =>line.split(",").map(_.trim.toDouble))
     val trainRDD = trainCSV.map(lp => MLLabeledPoint(lp.last, new MLDenseVector(lp.slice(0,lp.length-1))))
-    //trainRDD.take(10).foreach(println)
     
-    //val testCSV = sc.textFile(inputTestPath).map(line =>line.split(",").map(_.trim.toDouble))
-    //val testSet = testCSV.map(lp => new MLDenseVector(lp.slice(0,lp.length-1)))
+    val testCSV = sc.textFile(inputTestPath).map(line =>line.split(",").map(_.trim.toDouble))
+    val testSet = testCSV.map(lp => MLLabeledPoint(lp.last, new MLDenseVector(lp.slice(0,lp.length-1))))
+    
 
     // training parameters
     val paramMap = List(
@@ -59,11 +61,11 @@ object SparkWithRDD {
 
     //************
 
-    //val predict = xgboostModel.predict(testSet, missingValue = Float.NaN)
-    //val result = predict.map(lp => lp.deep.mkString("\n"))
+    val error = xgboostModel.eval(testSet, "7w")
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
     sc.parallelize(Array(t1-t0)).coalesce(1).saveAsTextFile(outputTextPath)
+    sc.parallelize(Array(error)).coalesce(1).saveAsTextFile(outputErrorPath)
   }
 }
