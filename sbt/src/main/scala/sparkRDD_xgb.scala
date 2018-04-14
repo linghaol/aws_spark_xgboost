@@ -35,7 +35,7 @@ object SparkWithRDD {
     val outputErrorPath = "s3://ee451-team-project/output/error_7w"
 
     // number of iterations
-    val numRound = 1000  
+    val numRound = 100 
     val num_workers = 4 
 
     // processing
@@ -61,7 +61,7 @@ object SparkWithRDD {
 
     //************
 
-    val error = xgboostModel.eval(testSet, "7w")
+    val error = xgboostModel.eval(testSet, "7w", iter=1)
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
