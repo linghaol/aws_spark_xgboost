@@ -36,7 +36,3 @@ sudo yum -y install sbt
 
 export PATH=/usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin:$PATH
 
-cd ../../sbt
-
-sbt package
-
