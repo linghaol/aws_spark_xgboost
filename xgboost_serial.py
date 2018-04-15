@@ -12,8 +12,8 @@ import xgboost as xgb
 from datetime import datetime
 
 # read dataset.csv as numpy array
-train_path = '/home/hadoop/aws_spark_xgboost/train_7w.csv'
-test_path = '/home/hadoop/aws_spark_xgboost/test_7w.csv'
+train_path = '/home/hadoop/aws_spark_xgboost/dataset/train_7w.csv'
+test_path = '/home/hadoop/aws_spark_xgboost/dataset/test_7w.csv'
 traindata = np.genfromtxt(train_path, delimiter=',')
 testdata = np.genfromtxt(test_path, delimiter=',')
 
@@ -36,7 +36,7 @@ param = {'booster': 'gbtree',
 		 'objective': 'binary:logistic', 
 		 'eval_metric': 'error'}
 
-num_round = 100
+num_round = 300
 
 
 # train model & record training time

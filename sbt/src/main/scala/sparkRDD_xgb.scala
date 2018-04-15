@@ -35,7 +35,7 @@ object SparkWithRDD {
     val outputErrorPath = "s3://ee451-team-project/output/error_7w"
 
     // number of iterations
-    val numRound = 100 
+    val numRound = 300
     val num_workers = 4 
 
     // processing
