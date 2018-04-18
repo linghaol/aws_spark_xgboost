@@ -28,15 +28,15 @@ object SparkWithRDD {
     implicit val sc = new SparkContext(sparkConf)
     
     // settings
-    val inputTrainPath = "s3://ee451-team-project/input/train_7w.csv"
-    val inputTestPath = "s3://ee451-team-project/input/test_7w.csv"
-    val outputModelPath = "s3://ee451-team-project/output/model_7w"
-    val outputTextPath = "s3://ee451-team-project/output/time_7w"
-    val outputErrorPath = "s3://ee451-team-project/output/error_7w"
+    val inputTrainPath = "s3://ee451-team-project/input/train_28w.csv"
+    val inputTestPath = "s3://ee451-team-project/input/test_28w.csv"
+    val outputModelPath = "s3://ee451-team-project/output/model_28w_demo"
+    val outputTextPath = "s3://ee451-team-project/output/time_28w_demo"
+    val outputErrorPath = "s3://ee451-team-project/output/error_28w_demo"
 
     // number of iterations
     val numRound = 300
-    val num_workers = 4 
+    val num_workers = 2 
 
     // processing
     val trainCSV = sc.textFile(inputTrainPath).map(line =>line.split(",").map(_.trim.toDouble))
@@ -61,7 +61,7 @@ object SparkWithRDD {
 
     //************
 
-    val error = xgboostModel.eval(testSet, "7w", iter=1)
+    val error = xgboostModel.eval(testSet, "28w_demo", iter=1)
 
     // save model to S3 path
     xgboostModel.saveModelAsHadoopFile(outputModelPath)
