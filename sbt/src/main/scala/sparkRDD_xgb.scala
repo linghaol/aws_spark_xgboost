@@ -30,9 +30,9 @@ object SparkWithRDD {
     // settings
     val inputTrainPath = "s3://ee451-team-project/input/train_28w.csv"
     val inputTestPath = "s3://ee451-team-project/input/test_28w.csv"
-    val outputModelPath = "s3://ee451-team-project/output/model_28w_demo"
-    val outputTextPath = "s3://ee451-team-project/output/time_28w_demo"
-    val outputErrorPath = "s3://ee451-team-project/output/error_28w_demo"
+    val outputModelPath = "s3://ee451-team-project/demo/model_28w_demo"
+    val outputTextPath = "s3://ee451-team-project/demo/time_28w_demo"
+    val outputErrorPath = "s3://ee451-team-project/demo/error_28w_demo"
 
     // number of iterations
     val numRound = 300

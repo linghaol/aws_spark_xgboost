@@ -24,11 +24,11 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk.x86_64
 cd jvm-packages
 sudo mvn package -DskipTests
 
-sudo cp xgboost4j/target/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar /usr/lib/spark/jars
-sudo cp xgboost4j-spark/target/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar /usr/lib/spark/jars
+sudo cp xgboost4j/target/xgboost4j-0.72-jar-with-dependencies.jar /usr/lib/spark/jars
+sudo cp xgboost4j-spark/target/xgboost4j-spark-0.72-jar-with-dependencies.jar /usr/lib/spark/jars
 
-sudo cp xgboost4j/target/xgboost4j-0.8-SNAPSHOT-jar-with-dependencies.jar /home/hadoop/aws_spark_xgboost/sbt/lib
-sudo cp xgboost4j-spark/target/xgboost4j-spark-0.8-SNAPSHOT-jar-with-dependencies.jar /home/hadoop/aws_spark_xgboost/sbt/lib
+sudo cp xgboost4j/target/xgboost4j-0.72-jar-with-dependencies.jar /home/hadoop/aws_spark_xgboost/sbt/lib
+sudo cp xgboost4j-spark/target/xgboost4j-spark-0.72-jar-with-dependencies.jar /home/hadoop/aws_spark_xgboost/sbt/lib
 
 curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
 sudo mv bintray-sbt-rpm.repo /etc/yum.repos.d/
